@@ -6,7 +6,7 @@ import android.util.DisplayMetrics
 import android.view.View
 import com.google.android.material.snackbar.Snackbar
 
-fun getScreenWidth(activity: Activity) = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+internal fun getScreenWidth(activity: Activity) = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
     val windowMetrics = activity.windowManager.currentWindowMetrics
     windowMetrics.bounds.width()
 } else {
@@ -15,7 +15,7 @@ fun getScreenWidth(activity: Activity) = if (Build.VERSION.SDK_INT >= Build.VERS
     displayMetrics.widthPixels
 }
 
-fun showSnackBar(
+internal fun showSnackBar(
     view: View,
     message: String,
     anchorView: View? = null
