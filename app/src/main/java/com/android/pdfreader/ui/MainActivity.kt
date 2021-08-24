@@ -1,18 +1,17 @@
-package com.android.pdfreader
+package com.android.pdfreader.ui
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.pdf.PdfRenderer
-import android.os.Build
 import android.os.Bundle
 import android.os.ParcelFileDescriptor
-import android.util.DisplayMetrics
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.pdfreader.databinding.ActivityMainBinding
+import com.android.pdfreader.utils.getScreenWidth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -38,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
         binding.pdfList.layoutManager = layoutManager
         binding.pdfList.addItemDecoration(itemDecoration)
-        openRenderer("sample_pdf.pdf", assets.open("sample_pdf.pdf"))
+        openRenderer("sample_pdf", assets.open("sample_pdf.pdf"))
     }
 
     private fun openRenderer(
@@ -46,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         fileInputStream: InputStream
     ) = lifecycleScope.launch(Dispatchers.IO) {
 
-        val file        = File(cacheDir, fileName)
+        val file        = File(cacheDir, "$fileName.pdf")
         val output      = FileOutputStream(file)
         val buffer      = ByteArray(DEFAULT_BUFFER_SIZE)
         var size        = fileInputStream.read(buffer)
@@ -61,7 +60,7 @@ class MainActivity : AppCompatActivity() {
 
         val fileDescriptor = ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_WRITE)
         val pdfRenderer    = PdfRenderer(fileDescriptor)
-        val width          = getScreenWidth()
+        val width          = getScreenWidth(this@MainActivity)
         val bitmapList     = mutableListOf<Bitmap>()
 
         for (x in 0 until pdfRenderer.pageCount) {
@@ -82,14 +81,5 @@ class MainActivity : AppCompatActivity() {
 
         adapter = PdfAdapter(bitmapList)
         withContext(Dispatchers.Main) { binding.pdfList.adapter = adapter }
-    }
-
-    private fun getScreenWidth() = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-        val windowMetrics = windowManager.currentWindowMetrics
-        windowMetrics.bounds.width()
-    } else {
-        val displayMetrics = DisplayMetrics()
-        windowManager.defaultDisplay.getMetrics(displayMetrics)
-        displayMetrics.widthPixels
     }
 }

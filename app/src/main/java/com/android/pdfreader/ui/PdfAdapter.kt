@@ -1,4 +1,4 @@
-package com.android.pdfreader
+package com.android.pdfreader.ui
 
 import android.graphics.Bitmap
 import android.view.LayoutInflater
@@ -19,7 +19,7 @@ class PdfAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PdfAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return ViewHolder(RowPageItemBinding.inflate(inflater, parent, false))
     }
