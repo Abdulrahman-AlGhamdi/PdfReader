@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.pdfreader.databinding.RowPageItemBinding
 
-class PdfAdapter(
-    private val bitmapList: MutableList<Bitmap>
+internal class PdfAdapter(
+    private val bitmapList: List<Bitmap>
 ) : RecyclerView.Adapter<PdfAdapter.ViewHolder>() {
 
     inner class ViewHolder(

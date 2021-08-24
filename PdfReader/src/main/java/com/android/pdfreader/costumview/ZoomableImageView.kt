@@ -12,7 +12,7 @@ import android.view.ScaleGestureDetector
 import android.view.View
 import androidx.appcompat.widget.AppCompatImageView
 
-class ZoomableImageView @JvmOverloads constructor(
+internal class ZoomableImageView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
