@@ -40,6 +40,13 @@ val pdfReaderManager = PdfReaderManager.getManagerInstance()
 pdfReaderManager.showPdf(inputStream = pdfFileInputStream)
 ```
 
+## Library Images
+
+<div style="display:flex;">
+<img alt="App image" src="https://i.ibb.co/Xb9ZCLg/1.png" width="10%">
+<img alt="App image" src="https://i.ibb.co/3pZ9hBr/2.png" width="10%">
+</div>
+
 ## License
 
 ```
