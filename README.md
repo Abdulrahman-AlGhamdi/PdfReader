@@ -34,10 +34,10 @@ val pdfReaderManager = PdfReaderManager.getManagerInstance()
 
 * Second : 
     * Call `showPdf` function
-    * In the constructor provide the inputstream of the pdf file
+    * In the constructor provide an activity reference and the inputStream of the pdf file
 
 ```kotlin
-pdfReaderManager.showPdf(inputStream = pdfFileInputStream)
+pdfReaderManager.showPdf(activity = this, inputStream = pdfFileInputStream)
 ```
 
 ## Library Images
