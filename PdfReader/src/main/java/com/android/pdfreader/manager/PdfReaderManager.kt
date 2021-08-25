@@ -2,7 +2,7 @@ package com.android.pdfreader.manager
 
 import android.app.Activity
 import android.content.Intent
-import com.android.pdfreader.ui.PdfReaderActivity
+import com.android.pdfreader.ui.PdfActivity
 import java.io.InputStream
 
 class PdfReaderManager {
@@ -11,7 +11,7 @@ class PdfReaderManager {
 
     fun showPdf(activity: Activity, inputStream: InputStream) {
         this.inputStream = inputStream
-        activity.startActivity(Intent(activity, PdfReaderActivity::class.java))
+        activity.startActivity(Intent(activity, PdfActivity::class.java))
     }
 
     companion object {

@@ -1,4 +1,4 @@
-package com.android.pdfreader.costumview
+package com.android.pdfreader.ui.page
 
 import android.content.Context
 import android.graphics.Matrix
