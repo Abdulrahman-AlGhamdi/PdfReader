@@ -1,14 +1,15 @@
-package com.android.pdfreader.ui
+package com.android.pdfreader.ui.reader
 
 import android.graphics.Bitmap
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.android.pdfreader.databinding.RowPageItemBinding
 
-internal class PdfAdapter(
+internal class PdfReaderAdapter(
     private val bitmapList: List<Bitmap>
-) : RecyclerView.Adapter<PdfAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<PdfReaderAdapter.ViewHolder>() {
 
     inner class ViewHolder(
         private val binding: RowPageItemBinding
@@ -16,6 +17,12 @@ internal class PdfAdapter(
 
         fun bind(page: Bitmap) {
             binding.page.setImageBitmap(page)
+
+            binding.root.setOnClickListener {
+                val directions = PdfReaderFragmentDirections
+                val action = directions.actionPdfReaderFragmentToPdfPageFragment(page)
+                itemView.findNavController().navigate(action)
+            }
         }
     }
 

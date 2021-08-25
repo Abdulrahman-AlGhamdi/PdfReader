@@ -1,4 +1,4 @@
-package com.android.pdfreader.ui
+package com.android.pdfreader.ui.reader
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

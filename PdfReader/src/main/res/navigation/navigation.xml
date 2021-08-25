@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/pdfReaderFragment">
+
+    <fragment
+        android:id="@+id/pdfReaderFragment"
+        android:name="com.android.pdfreader.ui.reader.PdfReaderFragment"
+        android:label="@string/pdf_reader"
+        tools:layout="@layout/fragment_pdf_reader">
+        <action
+            android:id="@+id/action_pdfReaderFragment_to_pdfPageFragment"
+            app:destination="@id/pdfPageFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/pdfPageFragment"
+        android:name="com.android.pdfreader.ui.page.PdfPageFragment"
+        android:label="@string/pdf_page"
+        tools:layout="@layout/fragment_pdf_page">
+        <argument
+            android:name="bitmap"
+            app:argType="android.graphics.Bitmap" />
+    </fragment>
+
+</navigation>
