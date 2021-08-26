@@ -1,2 +1,2 @@
 rootProject.name = "PdfReader"
-include ':PdfReader'
+include ':pdfreader'
